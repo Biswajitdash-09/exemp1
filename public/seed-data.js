@@ -91,7 +91,7 @@
     {
       id: '_ver1',
       companyName: 'codemate.ai',
-      email: 'adityamathan@codemateai.dev',
+      email: 'adityasuman@codemateai.dev',
       password: simpleHash('Aditya@12345'),
       isEmailVerified: true,
       isActive: true,
