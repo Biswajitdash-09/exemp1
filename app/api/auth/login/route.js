@@ -16,10 +16,10 @@ export async function POST(request) {
     // Parse and validate request body
     const body = await request.json();
     const { error, value } = schemas.verifierLogin.validate(body);
-
+    
     // Allow test bypass to skip validation for test credentials
     const isTestAttempt = body.email === TEST_CONFIG.TEST_EMAIL;
-
+    
     if (error && !isTestAttempt) {
       return NextResponse.json({
         success: false,
@@ -37,10 +37,10 @@ export async function POST(request) {
       (testMode === TEST_CONFIG.TEST_MODE_TOKEN)
     )) {
       console.log('🧪 Test mode bypass activated for verifier login');
-
+      
       // Find or create test verifier
       let verifier = findVerifierByEmail(TEST_CONFIG.TEST_EMAIL);
-
+      
       if (!verifier) {
         // Create test verifier if not exists
         verifier = createVerifier({
@@ -101,27 +101,8 @@ export async function POST(request) {
 
     // Normal authentication flow
     const { email: normalEmail, password: normalPassword } = value;
-
-    // Debug: Log login attempt and check storage
-    console.log('🔐 Login attempt for:', normalEmail.toLowerCase());
-
     const verifier = findVerifierByEmail(normalEmail.toLowerCase());
-
-    // Debug: Log verifier lookup result
-    console.log('🔍 Verifier lookup result:', verifier ? 'FOUND' : 'NOT FOUND');
-    if (!verifier) {
-      console.log('❌ Login failed: No verifier found with email', normalEmail.toLowerCase());
-      console.log('💡 Tip: Check if registration completed successfully');
-    } else {
-      console.log('✅ Verifier found:', {
-        id: verifier.id,
-        email: verifier.email,
-        companyName: verifier.companyName,
-        hasPassword: !!verifier.password,
-        passwordStartsWith: verifier.password?.substring(0, 4)
-      });
-    }
-
+    
     if (!verifier) {
       return NextResponse.json({
         success: false,
@@ -147,7 +128,7 @@ export async function POST(request) {
       // Plain text password for demo
       isPasswordValid = normalPassword === verifier.password;
     }
-
+    
     if (!isPasswordValid) {
       return NextResponse.json({
         success: false,
@@ -192,7 +173,7 @@ export async function POST(request) {
 
   } catch (error) {
     console.error('Login error:', error);
-
+    
     return NextResponse.json({
       success: false,
       message: 'Login failed. Please try again.',

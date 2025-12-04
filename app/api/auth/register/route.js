@@ -8,7 +8,7 @@ export async function POST(request) {
     // Parse and validate request body
     const body = await request.json();
     const { error, value } = schemas.verifierRegistration.validate(body);
-
+    
     if (error) {
       return NextResponse.json({
         success: false,
@@ -41,24 +41,6 @@ export async function POST(request) {
       isEmailVerified: true, // Auto-verify for demo purposes
       isActive: true
     });
-
-    // Debug: Log the created verifier and all verifiers
-    console.log('✅ New verifier created:', {
-      id: newVerifier.id,
-      email: newVerifier.email,
-      companyName: newVerifier.companyName
-    });
-
-    // Verify the verifier was actually saved
-    const savedVerifier = findVerifierByEmail(email.toLowerCase());
-    console.log('🔍 Verification check - Saved verifier found:', savedVerifier ? 'YES' : 'NO');
-    if (savedVerifier) {
-      console.log('Saved verifier details:', {
-        id: savedVerifier.id,
-        email: savedVerifier.email,
-        hasPassword: !!savedVerifier.password
-      });
-    }
 
     // Generate JWT token
     const token = generateToken({
@@ -96,7 +78,7 @@ export async function POST(request) {
 
   } catch (error) {
     console.error('Registration error:', error);
-
+    
     return NextResponse.json({
       success: false,
       message: 'Registration failed. Please try again.',

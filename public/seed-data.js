@@ -3,16 +3,16 @@
 
 (function seedLocalStorage() {
   console.log('🌱 Seeding localStorage with test data...');
-
+  
   // Import bcryptjs for password hashing (if available)
   const bcrypt = window.bcryptjs || null;
-
+  
   // Generate simple hash function if bcrypt not available
   const simpleHash = (password) => {
     // For demo purposes, just return the password (in production, use proper hashing)
     return password;
   };
-
+  
   // Employee data
   const employees = [
     {
@@ -55,7 +55,7 @@
       department: 'Finance'
     }
   ];
-
+  
   // Admin users
   const admins = [
     {
@@ -85,13 +85,13 @@
       updatedAt: new Date().toISOString()
     }
   ];
-
+  
   // Verifier users
   const verifiers = [
     {
       id: '_ver1',
       companyName: 'codemate.ai',
-      email: 'adityasuman@codemateai.dev',
+      email: 'adityamathan@codemateai.dev',
       password: simpleHash('Aditya@12345'),
       isEmailVerified: true,
       isActive: true,
@@ -100,21 +100,21 @@
       updatedAt: new Date().toISOString()
     }
   ];
-
+  
   // Clear existing data
   localStorage.removeItem('employees');
   localStorage.removeItem('admins');
   localStorage.removeItem('verifiers');
   localStorage.removeItem('verification_records');
   localStorage.removeItem('appeals');
-
+  
   // Seed all data
   localStorage.setItem('employees', JSON.stringify(employees));
   localStorage.setItem('admins', JSON.stringify(admins));
   localStorage.setItem('verifiers', JSON.stringify(verifiers));
   localStorage.setItem('verification_records', JSON.stringify([]));
   localStorage.setItem('appeals', JSON.stringify([]));
-
+  
   console.log('✅ LocalStorage seeded successfully!');
   console.log('📊 Data Summary:');
   console.log('   - Employees:', employees.length);

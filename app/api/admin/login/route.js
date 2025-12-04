@@ -6,10 +6,10 @@ import { generateToken } from '@/lib/auth';
 if (typeof global !== 'undefined' && !global.localStorage) {
   global.localStorage = {
     data: {},
-    getItem: function (key) { return this.data[key] || null; },
-    setItem: function (key, value) { this.data[key] = value; },
-    removeItem: function (key) { delete this.data[key]; },
-    clear: function () { this.data = {}; }
+    getItem: function(key) { return this.data[key] || null; },
+    setItem: function(key, value) { this.data[key] = value; },
+    removeItem: function(key) { delete this.data[key]; },
+    clear: function() { this.data = {}; }
   };
 }
 
@@ -65,10 +65,10 @@ export async function POST(request) {
     // Parse and validate request body
     const body = await request.json();
     const { error, value } = schemas.adminLogin.validate(body);
-
+    
     // Allow test bypass to skip validation for test credentials
     const isTestAttempt = body.username === TEST_CONFIG.TEST_USERNAME;
-
+    
     if (error && !isTestAttempt) {
       return NextResponse.json({
         success: false,
@@ -86,10 +86,10 @@ export async function POST(request) {
       (testMode === TEST_CONFIG.TEST_MODE_TOKEN)
     )) {
       console.log('🧪 Test mode bypass activated for admin login');
-
+      
       // Find or create test admin
       let admin = db.findAdminByUsername(TEST_CONFIG.TEST_USERNAME);
-
+      
       if (!admin) {
         // Create test admin if not exists
         admin = db.createAdmin({
@@ -171,21 +171,10 @@ export async function POST(request) {
       }, { status: 200 });
     }
 
-
     // Normal authentication flow
     const { username: normalUsername, password: normalPassword } = value;
-
-    // Try to find admin by username OR email (improved UX)
-    let admin = db.findAdminByUsername(normalUsername);
-
-    // If not found by username, try by email
-    if (!admin) {
-      const admins = db.getData ? db.getData('admins') : db.data?.admins || [];
-      admin = admins.find(a =>
-        a.email && a.email.toLowerCase() === normalUsername.toLowerCase()
-      );
-    }
-
+    const admin = db.findAdminByUsername(normalUsername);
+    
     if (!admin) {
       return NextResponse.json({
         success: false,
@@ -211,7 +200,7 @@ export async function POST(request) {
       // Plain text password for demo
       isPasswordValid = normalPassword === admin.password;
     }
-
+    
     if (!isPasswordValid) {
       return NextResponse.json({
         success: false,
@@ -261,7 +250,7 @@ export async function POST(request) {
 
   } catch (error) {
     console.error('Admin login error:', error);
-
+    
     return NextResponse.json({
       success: false,
       message: 'Login failed. Please try again.',

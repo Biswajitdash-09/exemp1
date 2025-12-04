@@ -9,7 +9,7 @@ export async function POST(request) {
     // Authenticate the verifier
     const token = extractTokenFromHeader(request);
     console.log('Verify Request - Token received:', !!token);
-
+    
     if (!token) {
       console.log('Verify Request - No token found in headers');
       return NextResponse.json({
@@ -18,15 +18,13 @@ export async function POST(request) {
       }, { status: 401 });
     }
 
-
     // Verify token
     const { verifyToken } = await import('@/lib/auth');
-
-    let decoded; // Declare outside try-catch for wider scope
+    
     try {
-      decoded = verifyToken(token);
+      const decoded = verifyToken(token);
       console.log('Verify Request - Token decoded successfully:', decoded);
-
+      
       if (decoded.role !== 'verifier') {
         console.log('Verify Request - Invalid role:', decoded.role);
         return NextResponse.json({
@@ -43,11 +41,11 @@ export async function POST(request) {
         message: 'Invalid or expired token'
       }, { status: 401 });
     }
-
+    
     // Parse and validate request body
     const body = await request.json();
     const { error, value } = schemas.verificationRequest.validate(body);
-
+    
     if (error) {
       return NextResponse.json({
         success: false,
@@ -56,8 +54,7 @@ export async function POST(request) {
       }, { status: 400 });
     }
 
-
-    const { employeeId, ...otherFields } = value;
+    const { employeeId, ...verificationData } = value;
 
     // Find employee in localStorage
     const employee = db.findEmployee(employeeId.toUpperCase());
@@ -68,12 +65,9 @@ export async function POST(request) {
       }, { status: 404 });
     }
 
-    // Include employeeId in verification data for comparison
-    const verificationData = { employeeId, ...otherFields };
-
     // Perform detailed comparison
     const comparisonResults = compareEmployeeData(verificationData, employee);
-
+    
     // Calculate F&F status
     const fnfStatus = calculateFnFStatus(employee.exitReason, employee.dateOfLeaving);
 
@@ -132,7 +126,7 @@ export async function POST(request) {
 
   } catch (error) {
     console.error('Verification request error:', error);
-
+    
     return NextResponse.json({
       success: false,
       message: 'Verification failed. Please try again.',
@@ -154,7 +148,7 @@ export async function GET(request) {
 
     const { verifyToken } = await import('@/lib/auth');
     const decoded = verifyToken(token);
-
+    
     if (decoded.role !== 'verifier') {
       return NextResponse.json({
         success: false,
@@ -165,7 +159,7 @@ export async function GET(request) {
     // Get query parameters
     const { searchParams } = new URL(request.url);
     const verificationId = searchParams.get('id');
-
+    
     // If verification ID is provided, return specific verification details
     if (verificationId) {
       // Find verification record
@@ -215,7 +209,7 @@ export async function GET(request) {
         }
       }, { status: 200 });
     }
-
+    
     // Otherwise, return verification history with pagination
     const page = parseInt(searchParams.get('page')) || 1;
     const limit = parseInt(searchParams.get('limit')) || 10;
@@ -245,7 +239,7 @@ export async function GET(request) {
 
   } catch (error) {
     console.error('GET verification error:', error);
-
+    
     return NextResponse.json({
       success: false,
       message: 'Failed to fetch verification data',
@@ -272,7 +266,7 @@ function generateComparisonSummary(comparisonResults) {
   const matches = comparisonResults.filter(r => r.isMatch).length;
   const total = comparisonResults.length;
   const score = Math.round((matches / total) * 100);
-
+  
   if (score === 100) {
     return 'Perfect Match - All fields match our records';
   } else if (score >= 70) {

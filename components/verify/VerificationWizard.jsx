@@ -1,15 +1,13 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
-// TEMPORARY: Use debug version for troubleshooting
-import apiService from "@/lib/api.service.debug.js";
-import { reportAPI, handleError } from "@/lib/api.service.js";
-import Icon from "@/components/Icon";
-import Toast from "@/components/ui/Toast";
-import ComparisonRow from "@/components/verify/ComparisonRow";
-import AppealModal from "@/components/verify/AppealModal";
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
+import apiService, { reportAPI, handleError } from '@/lib/api.service.js';
+import Icon from '@/components/Icon';
+import Toast from '@/components/ui/Toast';
+import ComparisonRow from '@/components/verify/ComparisonRow';
+import AppealModal from '@/components/verify/AppealModal';
 
 const VerificationWizard = () => {
   const [step, setStep] = useState(1);
@@ -34,19 +32,19 @@ const VerificationWizard = () => {
   useEffect(() => {
     const sessionData = localStorage.getItem('verifier_session');
     console.log('VerificationWizard: Checking session data:', sessionData);
-
+    
     if (sessionData) {
       try {
         const parsedSession = JSON.parse(sessionData);
         console.log('VerificationWizard: Parsed session:', parsedSession);
-
+        
         if (!parsedSession.token) {
           console.error('VerificationWizard: No token in session');
           showToast('Your session is invalid (no token), please log in again.', 'error');
           router.push('/login');
           return;
         }
-
+        
         setVerifier(parsedSession);
         setFormData(prev => ({ ...prev, companyName: parsedSession.companyName || '' }));
       } catch (e) {
@@ -109,7 +107,7 @@ const VerificationWizard = () => {
       };
 
       const response = await apiService.verification.submitRequest(verificationData);
-
+      
       if (response.success) {
         setVerificationResult(response.data);
         setStep(4);
@@ -142,67 +140,17 @@ const VerificationWizard = () => {
   const handleDownloadReport = async () => {
     try {
       showToast('Generating PDF report...', 'info');
-
-      // Use simple client-side PDF generation
-      const { generateVerificationPDF } = await import('@/lib/services/simplePdfService');
-
-      const result = generateVerificationPDF(
-        {
-          comparisonResults: verificationResult.comparisonResults,
-          overallStatus: verificationResult.overallStatus,
-          matchScore: verificationResult.matchScore
-        },
-        {
-          employeeId: verificationResult.employeeData.employeeId,
-          name: verificationResult.employeeData.name,
-          entityName: verificationResult.employeeData.entityName,
-          designation: verificationResult.employeeData.designation
-        }
-      );
-
-      if (result.success) {
+      
+      const response = await reportAPI.generateReport(verificationResult.verificationId, false);
+      
+      if (response.success && response.data.pdfUrl) {
+        window.open(response.data.pdfUrl, '_blank');
         showToast('Report downloaded successfully!', 'success');
       } else {
         showToast('Failed to generate PDF report', 'error');
       }
     } catch (error) {
-      console.error('PDF generation error:', error);
-      showToast(`Failed to generate PDF report: ${error.message}`, 'error');
-    }
-  };
-
-  const handleSendEmail = async () => {
-    try {
-      // Prepare email content
-      const subject = encodeURIComponent(
-        `Employment Verification Report - ${verificationResult.employeeData.name} (${verificationResult.employeeData.employeeId})`
-      );
-
-      const matchedFields = verificationResult.comparisonResults.filter(r => r.isMatch).length;
-      const totalFields = verificationResult.comparisonResults.length;
-      const status = verificationResult.overallStatus === 'matched' ? '✓ VERIFIED' : '⚠ PARTIAL MATCH';
-
-      const body = encodeURIComponent(
-        `Hello,\n\n` +
-        `I have completed the employment verification for:\n\n` +
-        `Employee Name: ${verificationResult.employeeData.name}\n` +
-        `Employee ID: ${verificationResult.employeeData.employeeId}\n` +
-        `Designation: ${verificationResult.employeeData.designation}\n` +
-        `Entity: ${verificationResult.employeeData.entityName}\n\n` +
-        `VERIFICATION RESULT: ${status}\n` +
-        `Match Score: ${verificationResult.matchScore}%\n` +
-        `Fields Matched: ${matchedFields}/${totalFields}\n\n` +
-        `Please find the detailed verification report attached (download from portal).\n\n` +
-        `Best regards`
-      );
-
-      // Open email client with pre-filled content
-      window.location.href = `mailto:?subject=${subject}&body=${body}`;
-
-      showToast('Email client opened! Please add recipient and send.', 'success');
-    } catch (error) {
-      console.error('Email error:', error);
-      showToast('Failed to open email client', 'error');
+      handleError(error, showToast);
     }
   };
 
@@ -210,7 +158,7 @@ const VerificationWizard = () => {
     switch (step) {
       case 1:
         return (
-          <motion.div
+          <motion.div 
             className="card bg-base-100 shadow-xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -221,7 +169,7 @@ const VerificationWizard = () => {
               <p className="my-4 text-base-content/70 max-w-md">
                 Confirm your company details and provide consent for verification
               </p>
-
+              
               <div className="w-full max-w-md space-y-4">
                 <div className="form-control">
                   <label className="label">
@@ -246,7 +194,7 @@ const VerificationWizard = () => {
                   </label>
                 </div>
               </div>
-
+              
               <div className="card-actions justify-end w-full mt-6">
                 <button
                   className="btn w-full max-w-md"
@@ -263,7 +211,7 @@ const VerificationWizard = () => {
 
       case 2:
         return (
-          <motion.div
+          <motion.div 
             className="card bg-base-100 shadow-xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -274,35 +222,35 @@ const VerificationWizard = () => {
                 <h2 className="card-title text-2xl justify-center">Step 2: Employee Details</h2>
                 <p className="text-base-content/70">Enter the employee details as per relieving letter</p>
               </div>
-
+              
               <div className="space-y-4">
                 <div className="form-control">
                   <label className="label"><span className="label-text font-semibold">Employee ID</span></label>
-                  <input
-                    type="text"
-                    name="employeeId"
-                    value={formData.employeeId}
-                    onChange={handleFormChange}
-                    placeholder="e.g., 6002056"
-                    className="input input-bordered"
-                    required
+                  <input 
+                    type="text" 
+                    name="employeeId" 
+                    value={formData.employeeId} 
+                    onChange={handleFormChange} 
+                    placeholder="e.g., 6002056" 
+                    className="input input-bordered" 
+                    required 
                   />
                 </div>
-
+                
                 <div className="form-control">
                   <label className="label"><span className="label-text font-semibold">Full Name</span></label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleFormChange}
-                    placeholder="e.g., S Sathish"
-                    className="input input-bordered"
-                    required
+                  <input 
+                    type="text" 
+                    name="name" 
+                    value={formData.name} 
+                    onChange={handleFormChange} 
+                    placeholder="e.g., S Sathish" 
+                    className="input input-bordered" 
+                    required 
                   />
                 </div>
               </div>
-
+              
               <div className="card-actions justify-between mt-6">
                 <button className="btn" style={{ backgroundColor: '#E6F3EF', color: '#007A3D', fontFamily: "'Montserrat', sans-serif" }} onClick={handleBack}>
                   <Icon name="ArrowLeft" className="w-4 h-4" /> Back
@@ -317,7 +265,7 @@ const VerificationWizard = () => {
 
       case 3:
         return (
-          <motion.div
+          <motion.div 
             className="card bg-base-100 shadow-xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -328,7 +276,7 @@ const VerificationWizard = () => {
                 <h2 className="card-title text-2xl justify-center">Step 3: Employment Details</h2>
                 <p className="text-base-content/70">Enter the employment details as per relieving letter</p>
               </div>
-
+              
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="form-control">
                   <label className="label"><span className="label-text font-semibold">Entity Name</span></label>
@@ -338,7 +286,7 @@ const VerificationWizard = () => {
                     <option value="HIB">HIB</option>
                   </select>
                 </div>
-
+                
                 <div className="form-control">
                   <label className="label"><span className="label-text font-semibold">Designation</span></label>
                   <select name="designation" value={formData.designation} onChange={handleFormChange} className="select select-bordered" required>
@@ -348,31 +296,31 @@ const VerificationWizard = () => {
                     <option value="Manager">Manager</option>
                   </select>
                 </div>
-
+                
                 <div className="form-control">
                   <label className="label"><span className="label-text font-semibold">Date of Joining</span></label>
-                  <input
-                    type="date"
-                    name="dateOfJoining"
-                    value={formData.dateOfJoining}
-                    onChange={handleFormChange}
-                    className="input input-bordered"
-                    required
+                  <input 
+                    type="date" 
+                    name="dateOfJoining" 
+                    value={formData.dateOfJoining} 
+                    onChange={handleFormChange} 
+                    className="input input-bordered" 
+                    required 
                   />
                 </div>
-
+                
                 <div className="form-control">
                   <label className="label"><span className="label-text font-semibold">Date of Leaving</span></label>
-                  <input
-                    type="date"
-                    name="dateOfLeaving"
-                    value={formData.dateOfLeaving}
-                    onChange={handleFormChange}
-                    className="input input-bordered"
-                    required
+                  <input 
+                    type="date" 
+                    name="dateOfLeaving" 
+                    value={formData.dateOfLeaving} 
+                    onChange={handleFormChange} 
+                    className="input input-bordered" 
+                    required 
                   />
                 </div>
-
+                
                 <div className="form-control md:col-span-2">
                   <label className="label"><span className="label-text font-semibold">Exit Reason</span></label>
                   <select name="exitReason" value={formData.exitReason} onChange={handleFormChange} className="select select-bordered" required>
@@ -385,7 +333,7 @@ const VerificationWizard = () => {
                   </select>
                 </div>
               </div>
-
+              
               <div className="card-actions justify-between mt-6">
                 <button className="btn" style={{ backgroundColor: '#E6F3EF', color: '#007A3D', fontFamily: "'Montserrat', sans-serif" }} onClick={handleBack}>
                   <Icon name="ArrowLeft" className="w-4 h-4" /> Back
@@ -412,7 +360,7 @@ const VerificationWizard = () => {
                   <h2 className="card-title text-2xl justify-center">Verification Results</h2>
                   <p className="text-base-content/70">Comparison for Employee ID: <strong>{verificationResult.employeeData.employeeId}</strong></p>
                 </div>
-
+                
                 <div className="overflow-x-auto">
                   <table className="table w-full">
                     <thead>
@@ -430,7 +378,7 @@ const VerificationWizard = () => {
                     </tbody>
                   </table>
                 </div>
-
+                
                 <div className="mt-6 p-4 bg-base-200 rounded-lg">
                   <h3 className="font-semibold text-lg mb-2">F&F Status</h3>
                   <div className="badge badge-lg">
@@ -441,7 +389,7 @@ const VerificationWizard = () => {
                     )}
                   </div>
                 </div>
-
+                
                 <div className="card-actions flex-wrap justify-center gap-4 mt-8">
                   <button className="btn" style={{ backgroundColor: '#f59e0b', borderColor: '#f59e0b', color: 'white', fontFamily: "'Montserrat', sans-serif" }} onClick={() => setIsAppealModalOpen(true)}>
                     <Icon name="FileWarning" className="w-4 h-4" /> Raise Appeal
@@ -449,14 +397,11 @@ const VerificationWizard = () => {
                   <button className="btn" style={{ backgroundColor: '#004F9E', borderColor: '#004F9E', color: 'white', fontFamily: "'Montserrat', sans-serif" }} onClick={handleDownloadReport}>
                     <Icon name="Download" className="w-4 h-4" /> Download Report
                   </button>
-                  <button className="btn" style={{ backgroundColor: '#6366f1', borderColor: '#6366f1', color: 'white', fontFamily: "'Montserrat', sans-serif" }} onClick={handleSendEmail}>
-                    <Icon name="Mail" className="w-4 h-4" /> Send Email
-                  </button>
                   <button className="btn" style={{ backgroundColor: '#E6F3EF', color: '#007A3D', fontFamily: "'Montserrat', sans-serif" }} onClick={handleStartOver}>
                     <Icon name="RotateCw" className="w-4 h-4" /> Start New Verification
                   </button>
                   <button className="btn" style={{ backgroundColor: '#007A3D', borderColor: '#007A3D', color: 'white', fontFamily: "'Montserrat', sans-serif" }} onClick={() => router.push(`/verify/success?employeeId=${verificationResult.employeeData.employeeId}`)}>
-                    <Icon name="Check" className="w-4 h-4" /> Finish Verification
+                    Finish Verification <Icon name="Check" className="w-4 h-4" />
                   </button>
                 </div>
               </div>
@@ -472,12 +417,12 @@ const VerificationWizard = () => {
   return (
     <div className="w-full max-w-5xl mx-auto">
       {toast.show && <Toast message={toast.message} type={toast.type} onClose={closeToast} />}
-
+      
       <ul className="steps w-full mb-12">
-        <li className={`step ${step >= 1 ? 'text-[#007A3D]' : 'text-gray-400'} `} style={{ color: step >= 1 ? '#007A3D' : '#d1d5db' }}>Company & Consent</li>
-        <li className={`step ${step >= 2 ? 'text-[#007A3D]' : 'text-gray-400'} `} style={{ color: step >= 2 ? '#007A3D' : '#d1d5db' }}>Employee Details</li>
-        <li className={`step ${step >= 3 ? 'text-[#007A3D]' : 'text-gray-400'} `} style={{ color: step >= 3 ? '#007A3D' : '#d1d5db' }}>Employment Details</li>
-        <li className={`step ${step >= 4 ? 'text-[#007A3D]' : 'text-gray-400'} `} style={{ color: step >= 4 ? '#007A3D' : '#d1d5db' }}>Results</li>
+        <li className={`step ${step >= 1 ? 'text-[#007A3D]' : 'text-gray-400'}`} style={{ color: step >= 1 ? '#007A3D' : '#d1d5db' }}>Company & Consent</li>
+        <li className={`step ${step >= 2 ? 'text-[#007A3D]' : 'text-gray-400'}`} style={{ color: step >= 2 ? '#007A3D' : '#d1d5db' }}>Employee Details</li>
+        <li className={`step ${step >= 3 ? 'text-[#007A3D]' : 'text-gray-400'}`} style={{ color: step >= 3 ? '#007A3D' : '#d1d5db' }}>Employment Details</li>
+        <li className={`step ${step >= 4 ? 'text-[#007A3D]' : 'text-gray-400'}`} style={{ color: step >= 4 ? '#007A3D' : '#d1d5db' }}>Results</li>
       </ul>
 
       {renderStepContent()}

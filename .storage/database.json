@@ -1,0 +1,926 @@
+{
+  "employees": [
+    {
+      "id": "_emp1",
+      "employeeId": "6002056",
+      "name": "S Sathish",
+      "email": "sathish.s@company.com",
+      "entityName": "TVSCSHIB",
+      "dateOfJoining": "2021-02-05",
+      "dateOfLeaving": "2024-03-31",
+      "designation": "Executive",
+      "exitReason": "Resigned",
+      "fnfStatus": "Completed",
+      "department": "HRD",
+      "createdAt": "2025-12-03T19:47:11.770Z"
+    },
+    {
+      "id": "_emp2",
+      "employeeId": "6002057",
+      "name": "Rajesh Kumar",
+      "email": "rajesh.kumar@company.com",
+      "entityName": "TVSCSHIB",
+      "dateOfJoining": "2020-03-15",
+      "dateOfLeaving": "2024-01-20",
+      "designation": "Assistant Manager",
+      "exitReason": "Resigned",
+      "fnfStatus": "Completed",
+      "department": "Technology",
+      "createdAt": "2025-12-03T19:47:11.779Z"
+    },
+    {
+      "id": "_emp3",
+      "employeeId": "6002058",
+      "name": "Priya Sharma",
+      "email": "priya.sharma@company.com",
+      "entityName": "HIB",
+      "dateOfJoining": "2019-07-10",
+      "dateOfLeaving": "2023-12-15",
+      "designation": "Manager",
+      "exitReason": "Resigned",
+      "fnfStatus": "Pending",
+      "department": "Finance",
+      "createdAt": "2025-12-03T19:47:11.779Z"
+    }
+  ],
+  "verifiers": [
+    {
+      "id": "_35xra4r4v",
+      "companyName": "Test Company",
+      "email": "test@company.com",
+      "password": "$2b$12$DhJ9prDiGUfTteU67QYvh.z8yWlBxWSljcP55IcREj4b5maQxdn4e",
+      "isEmailVerified": false,
+      "isActive": true,
+      "verificationRequests": [],
+      "createdAt": "2025-12-03T18:28:58.765Z",
+      "updatedAt": "2025-12-03T18:55:57.440Z",
+      "lastLoginAt": "2025-12-03T18:55:57.440Z"
+    },
+    {
+      "id": "_g9dj9hj6y",
+      "companyName": "AI",
+      "email": "biswajit@codemate.dev",
+      "password": "$2b$12$AFWFNEZqkKPo789Jog9q.esbAwPSZp4jyRKUeOtZtxOiFHrchxZom",
+      "isEmailVerified": false,
+      "isActive": true,
+      "verificationRequests": [],
+      "createdAt": "2025-12-03T19:03:24.196Z",
+      "updatedAt": "2025-12-03T19:13:23.390Z",
+      "lastLoginAt": "2025-12-03T19:13:23.389Z"
+    },
+    {
+      "id": "_f2z8g9yex",
+      "companyName": "New",
+      "email": "new@abc.dev",
+      "password": "$2b$12$pShAvehlNxQVBZ1Ecd9qwusL3iE3mr3mnca5ESzC6ei22zqi4dIBO",
+      "isEmailVerified": false,
+      "isActive": true,
+      "verificationRequests": [],
+      "createdAt": "2025-12-03T19:20:39.142Z",
+      "updatedAt": "2025-12-03T19:40:56.828Z",
+      "lastLoginAt": "2025-12-03T19:40:56.827Z"
+    },
+    {
+      "id": "_7txp4iztv",
+      "companyName": "hii",
+      "email": "hii@abc.in",
+      "password": "$2b$12$uk.hUsg5bTRVxi/N2kXaluzo.l7ajdWIl0fFYzwoui9pRJkbCHTLS",
+      "isEmailVerified": false,
+      "isActive": true,
+      "verificationRequests": [],
+      "createdAt": "2025-12-03T19:55:20.703Z",
+      "updatedAt": "2025-12-03T20:05:27.320Z",
+      "lastLoginAt": "2025-12-03T20:05:27.319Z"
+    },
+    {
+      "id": "_35gz8x39x",
+      "companyName": "fii",
+      "email": "fii@yt.com",
+      "password": "$2b$12$jDEu7fgk.mXMbz9VdrVc3uyro1sq54N0WzSswgWc4iEkTrnu/3S1G",
+      "isEmailVerified": false,
+      "isActive": true,
+      "verificationRequests": [],
+      "createdAt": "2025-12-03T20:16:47.347Z",
+      "updatedAt": "2025-12-03T20:23:36.235Z",
+      "lastLoginAt": "2025-12-03T20:23:36.234Z"
+    },
+    {
+      "id": "_i4wgops25",
+      "companyName": "Google",
+      "email": "biswajit@google.in",
+      "password": "$2b$12$69h33ojSirHO5erwxkieTeHWOGI7HjjwhumLvUM9htFQ3MgiNYlFi",
+      "isEmailVerified": false,
+      "isActive": true,
+      "verificationRequests": [],
+      "createdAt": "2025-12-03T20:57:15.946Z",
+      "updatedAt": "2025-12-03T20:59:08.342Z",
+      "lastLoginAt": "2025-12-03T20:59:08.341Z"
+    },
+    {
+      "id": "_i2pil31ok",
+      "companyName": "iC",
+      "email": "ic@ic.in",
+      "password": "$2b$12$nVO9cERzkgpt5HTocJA0V.uBOKtfpSV9Jy1vg2chWYNOngw0ijBW6",
+      "isEmailVerified": false,
+      "isActive": true,
+      "verificationRequests": [],
+      "createdAt": "2025-12-03T21:35:41.414Z",
+      "updatedAt": "2025-12-03T21:36:33.488Z",
+      "lastLoginAt": "2025-12-03T21:36:33.488Z"
+    },
+    {
+      "id": "_ha06gvj36",
+      "companyName": "gii",
+      "email": "gii@gii.in",
+      "password": "$2b$12$2HIpEzqQHK4SfqPBvo/kOuHYQOVdHBY0kzYI6DldvNULIf1aDXj5i",
+      "isEmailVerified": false,
+      "isActive": true,
+      "verificationRequests": [],
+      "createdAt": "2025-12-04T03:04:07.266Z",
+      "updatedAt": "2025-12-04T03:04:26.197Z",
+      "lastLoginAt": "2025-12-04T03:04:26.197Z"
+    },
+    {
+      "id": "_fr9avu38v",
+      "companyName": "Hiiii",
+      "email": "hi@hi.in",
+      "password": "$2b$12$Qv1qBvaq1Eqm2hQIJzOOmuEH1P3xuXcSvyZhJ.5vHpaG57Q.er976",
+      "isEmailVerified": false,
+      "isActive": true,
+      "verificationRequests": [],
+      "createdAt": "2025-12-04T03:11:18.194Z",
+      "updatedAt": "2025-12-04T03:12:20.153Z",
+      "lastLoginAt": "2025-12-04T03:12:20.153Z"
+    },
+    {
+      "id": "_ver1",
+      "companyName": "codemate.ai",
+      "email": "adityamathan@codemateai.dev",
+      "password": "Aditya@12345",
+      "isEmailVerified": true,
+      "isActive": true,
+      "verificationRequests": [],
+      "createdAt": "2025-12-04T03:18:50.606Z",
+      "updatedAt": "2025-12-04T03:36:45.855Z",
+      "lastLoginAt": "2025-12-04T03:36:45.854Z"
+    },
+    {
+      "id": "_p0pjxeg3j",
+      "companyName": "Codemate AI",
+      "email": "adityasuman@codemateai.dev",
+      "password": "$2b$12$lu3GJ8vw33ASwh/aHmRBYeExAdb1rk8YhGBjcRlThTQaGc19d4LEi",
+      "isEmailVerified": false,
+      "isActive": true,
+      "verificationRequests": [],
+      "createdAt": "2025-12-04T03:40:44.242Z",
+      "updatedAt": "2025-12-04T03:42:00.441Z",
+      "lastLoginAt": "2025-12-04T03:42:00.440Z"
+    },
+    {
+      "id": "_7bcqb1l2y",
+      "companyName": "fii",
+      "email": "fii@fii.in",
+      "password": "$2b$12$4hpEoq/y3bkr7nm4yXmpWuES6qp7M/mz2onNQSzc.mWYCh9GUMS1m",
+      "isEmailVerified": false,
+      "isActive": true,
+      "verificationRequests": [],
+      "createdAt": "2025-12-04T04:11:44.367Z",
+      "updatedAt": "2025-12-04T04:12:54.813Z",
+      "lastLoginAt": "2025-12-04T04:12:54.811Z"
+    }
+  ],
+  "admins": [
+    {
+      "id": "_admin1",
+      "username": "admin",
+      "email": "admin@company.com",
+      "password": "$2b$10$xriE9wHejuVbmGkX88EiSOzypCN0pusfqLdy/cr3khAghDvl267K6",
+      "fullName": "System Administrator",
+      "role": "super_admin",
+      "department": "IT",
+      "permissions": [
+        "view_appeals",
+        "manage_appeals",
+        "view_employees",
+        "manage_employees",
+        "send_emails",
+        "view_reports",
+        "manage_admins"
+      ],
+      "isActive": true,
+      "createdAt": "2025-12-03T19:47:11.872Z",
+      "updatedAt": "2025-12-04T03:42:37.548Z",
+      "lastLoginAt": "2025-12-04T03:42:37.547Z"
+    },
+    {
+      "id": "_admin2",
+      "username": "hr_manager",
+      "email": "hr@company.com",
+      "password": "$2b$10$21mjhVQBaYLYAKKLJKuQLup3mcom41OBgNzG1M7Dg5Du3c60tFLV6",
+      "fullName": "HR Manager",
+      "role": "hr_manager",
+      "department": "Human Resources",
+      "permissions": [
+        "view_appeals",
+        "manage_appeals",
+        "view_employees",
+        "send_emails",
+        "view_reports"
+      ],
+      "isActive": true,
+      "createdAt": "2025-12-03T19:47:11.945Z",
+      "updatedAt": "2025-12-03T20:46:48.602Z",
+      "lastLoginAt": "2025-12-03T20:46:48.598Z"
+    }
+  ],
+  "verification_records": [
+    {
+      "id": "_u2lkitl3c",
+      "verificationId": "VER000001",
+      "verifierId": "_7txp4iztv",
+      "employeeId": "6002056",
+      "submittedData": {
+        "name": "S Sathish",
+        "entityName": "TVSCSHIB",
+        "dateOfJoining": "2021-02-05T00:00:00.000Z",
+        "dateOfLeaving": "2024-03-31T00:00:00.000Z",
+        "designation": "Executive",
+        "exitReason": "Resigned",
+        "consentGiven": true
+      },
+      "comparisonResults": [
+        {
+          "field": "employeeId",
+          "verifierValue": "Not Provided",
+          "companyValue": "6002056",
+          "isMatch": false,
+          "matchType": "not_provided"
+        },
+        {
+          "field": "name",
+          "verifierValue": "S Sathish",
+          "companyValue": "S Sathish",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "entityName",
+          "verifierValue": "TVS-CSHIB",
+          "companyValue": "TVS-CSHIB",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "dateOfJoining",
+          "verifierValue": "Feb 05, 2021",
+          "companyValue": "Feb 05, 2021",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "dateOfLeaving",
+          "verifierValue": "Mar 31, 2024",
+          "companyValue": "Mar 31, 2024",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "designation",
+          "verifierValue": "Executive",
+          "companyValue": "Executive",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "exitReason",
+          "verifierValue": "Resigned",
+          "companyValue": "Resigned",
+          "isMatch": true,
+          "matchType": "exact"
+        }
+      ],
+      "overallStatus": "partial_match",
+      "matchScore": 86,
+      "consentGiven": true,
+      "verificationCompletedAt": "2025-12-03T20:02:33.523Z",
+      "createdAt": "2025-12-03T20:02:33.525Z",
+      "updatedAt": "2025-12-03T20:02:33.525Z"
+    },
+    {
+      "id": "_4jvptzwzl",
+      "verificationId": "VER000001",
+      "verifierId": "_7txp4iztv",
+      "employeeId": "6002056",
+      "submittedData": {
+        "name": "S Satish",
+        "entityName": "TVSCSHIB",
+        "dateOfJoining": "2021-02-05T00:00:00.000Z",
+        "dateOfLeaving": "2024-03-31T00:00:00.000Z",
+        "designation": "Executive",
+        "exitReason": "Resigned",
+        "consentGiven": true
+      },
+      "comparisonResults": [
+        {
+          "field": "employeeId",
+          "verifierValue": "Not Provided",
+          "companyValue": "6002056",
+          "isMatch": false,
+          "matchType": "not_provided"
+        },
+        {
+          "field": "name",
+          "verifierValue": "S Satish",
+          "companyValue": "S Sathish",
+          "isMatch": false,
+          "matchType": "partial"
+        },
+        {
+          "field": "entityName",
+          "verifierValue": "TVS-CSHIB",
+          "companyValue": "TVS-CSHIB",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "dateOfJoining",
+          "verifierValue": "Feb 05, 2021",
+          "companyValue": "Feb 05, 2021",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "dateOfLeaving",
+          "verifierValue": "Mar 31, 2024",
+          "companyValue": "Mar 31, 2024",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "designation",
+          "verifierValue": "Executive",
+          "companyValue": "Executive",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "exitReason",
+          "verifierValue": "Resigned",
+          "companyValue": "Resigned",
+          "isMatch": true,
+          "matchType": "exact"
+        }
+      ],
+      "overallStatus": "partial_match",
+      "matchScore": 71,
+      "consentGiven": true,
+      "verificationCompletedAt": "2025-12-03T20:05:27.315Z",
+      "createdAt": "2025-12-03T20:05:27.316Z",
+      "updatedAt": "2025-12-03T20:05:27.317Z"
+    },
+    {
+      "id": "_9m0ksbios",
+      "verificationId": "VER000001",
+      "verifierId": "_35gz8x39x",
+      "employeeId": "6002056",
+      "submittedData": {
+        "employeeId": "6002056",
+        "name": "S Sathish",
+        "entityName": "TVSCSHIB",
+        "dateOfJoining": "2021-02-05T00:00:00.000Z",
+        "dateOfLeaving": "2024-03-31T00:00:00.000Z",
+        "designation": "Executive",
+        "exitReason": "Resigned",
+        "consentGiven": true
+      },
+      "comparisonResults": [
+        {
+          "field": "employeeId",
+          "verifierValue": "6002056",
+          "companyValue": "6002056",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "name",
+          "verifierValue": "S Sathish",
+          "companyValue": "S Sathish",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "entityName",
+          "verifierValue": "TVS-CSHIB",
+          "companyValue": "TVS-CSHIB",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "dateOfJoining",
+          "verifierValue": "Feb 05, 2021",
+          "companyValue": "Feb 05, 2021",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "dateOfLeaving",
+          "verifierValue": "Mar 31, 2024",
+          "companyValue": "Mar 31, 2024",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "designation",
+          "verifierValue": "Executive",
+          "companyValue": "Executive",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "exitReason",
+          "verifierValue": "Resigned",
+          "companyValue": "Resigned",
+          "isMatch": true,
+          "matchType": "exact"
+        }
+      ],
+      "overallStatus": "matched",
+      "matchScore": 100,
+      "consentGiven": true,
+      "verificationCompletedAt": "2025-12-03T20:17:39.072Z",
+      "createdAt": "2025-12-03T20:17:39.073Z",
+      "updatedAt": "2025-12-03T20:17:39.074Z"
+    },
+    {
+      "id": "_qdymssvnk",
+      "verificationId": "VER000001",
+      "verifierId": "_35gz8x39x",
+      "employeeId": "6002056",
+      "submittedData": {
+        "employeeId": "6002056",
+        "name": "S Sathish",
+        "entityName": "TVSCSHIB",
+        "dateOfJoining": "2021-02-05T00:00:00.000Z",
+        "dateOfLeaving": "2024-03-31T00:00:00.000Z",
+        "designation": "Executive",
+        "exitReason": "Resigned",
+        "consentGiven": true
+      },
+      "comparisonResults": [
+        {
+          "field": "employeeId",
+          "verifierValue": "6002056",
+          "companyValue": "6002056",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "name",
+          "verifierValue": "S Sathish",
+          "companyValue": "S Sathish",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "entityName",
+          "verifierValue": "TVS-CSHIB",
+          "companyValue": "TVS-CSHIB",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "dateOfJoining",
+          "verifierValue": "Feb 05, 2021",
+          "companyValue": "Feb 05, 2021",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "dateOfLeaving",
+          "verifierValue": "Mar 31, 2024",
+          "companyValue": "Mar 31, 2024",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "designation",
+          "verifierValue": "Executive",
+          "companyValue": "Executive",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "exitReason",
+          "verifierValue": "Resigned",
+          "companyValue": "Resigned",
+          "isMatch": true,
+          "matchType": "exact"
+        }
+      ],
+      "overallStatus": "matched",
+      "matchScore": 100,
+      "consentGiven": true,
+      "verificationCompletedAt": "2025-12-03T20:23:36.230Z",
+      "createdAt": "2025-12-03T20:23:36.232Z",
+      "updatedAt": "2025-12-03T20:23:36.232Z"
+    },
+    {
+      "id": "_i2bprmrm7",
+      "verificationId": "VER000001",
+      "verifierId": "_i4wgops25",
+      "employeeId": "6002056",
+      "submittedData": {
+        "employeeId": "6002056",
+        "name": "S Sathish",
+        "entityName": "TVSCSHIB",
+        "dateOfJoining": "2021-02-05T00:00:00.000Z",
+        "dateOfLeaving": "2024-03-31T00:00:00.000Z",
+        "designation": "Executive",
+        "exitReason": "Resigned",
+        "consentGiven": true
+      },
+      "comparisonResults": [
+        {
+          "field": "employeeId",
+          "verifierValue": "6002056",
+          "companyValue": "6002056",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "name",
+          "verifierValue": "S Sathish",
+          "companyValue": "S Sathish",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "entityName",
+          "verifierValue": "TVS-CSHIB",
+          "companyValue": "TVS-CSHIB",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "dateOfJoining",
+          "verifierValue": "Feb 05, 2021",
+          "companyValue": "Feb 05, 2021",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "dateOfLeaving",
+          "verifierValue": "Mar 31, 2024",
+          "companyValue": "Mar 31, 2024",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "designation",
+          "verifierValue": "Executive",
+          "companyValue": "Executive",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "exitReason",
+          "verifierValue": "Resigned",
+          "companyValue": "Resigned",
+          "isMatch": true,
+          "matchType": "exact"
+        }
+      ],
+      "overallStatus": "matched",
+      "matchScore": 100,
+      "consentGiven": true,
+      "verificationCompletedAt": "2025-12-03T20:59:08.335Z",
+      "createdAt": "2025-12-03T20:59:08.337Z",
+      "updatedAt": "2025-12-03T20:59:08.337Z"
+    },
+    {
+      "id": "_7eofxvecr",
+      "verificationId": "VER000001",
+      "verifierId": "_i2pil31ok",
+      "employeeId": "6002056",
+      "submittedData": {
+        "employeeId": "6002056",
+        "name": "S Sathish",
+        "entityName": "TVSCSHIB",
+        "dateOfJoining": "2021-02-05T00:00:00.000Z",
+        "dateOfLeaving": "2024-03-31T00:00:00.000Z",
+        "designation": "Executive",
+        "exitReason": "Resigned",
+        "consentGiven": true
+      },
+      "comparisonResults": [
+        {
+          "field": "employeeId",
+          "verifierValue": "6002056",
+          "companyValue": "6002056",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "name",
+          "verifierValue": "S Sathish",
+          "companyValue": "S Sathish",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "entityName",
+          "verifierValue": "TVS-CSHIB",
+          "companyValue": "TVS-CSHIB",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "dateOfJoining",
+          "verifierValue": "Feb 05, 2021",
+          "companyValue": "Feb 05, 2021",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "dateOfLeaving",
+          "verifierValue": "Mar 31, 2024",
+          "companyValue": "Mar 31, 2024",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "designation",
+          "verifierValue": "Executive",
+          "companyValue": "Executive",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "exitReason",
+          "verifierValue": "Resigned",
+          "companyValue": "Resigned",
+          "isMatch": true,
+          "matchType": "exact"
+        }
+      ],
+      "overallStatus": "matched",
+      "matchScore": 100,
+      "consentGiven": true,
+      "verificationCompletedAt": "2025-12-03T21:36:33.485Z",
+      "createdAt": "2025-12-03T21:36:33.486Z",
+      "updatedAt": "2025-12-03T21:36:33.486Z"
+    },
+    {
+      "id": "_jietegcqs",
+      "verificationId": "VER000001",
+      "verifierId": "_fr9avu38v",
+      "employeeId": "6002056",
+      "submittedData": {
+        "employeeId": "6002056",
+        "name": "S Sathish",
+        "entityName": "TVSCSHIB",
+        "dateOfJoining": "2021-02-05T00:00:00.000Z",
+        "dateOfLeaving": "2024-03-31T00:00:00.000Z",
+        "designation": "Executive",
+        "exitReason": "Resigned",
+        "consentGiven": true
+      },
+      "comparisonResults": [
+        {
+          "field": "employeeId",
+          "verifierValue": "6002056",
+          "companyValue": "6002056",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "name",
+          "verifierValue": "S Sathish",
+          "companyValue": "S Sathish",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "entityName",
+          "verifierValue": "TVS-CSHIB",
+          "companyValue": "TVS-CSHIB",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "dateOfJoining",
+          "verifierValue": "Feb 05, 2021",
+          "companyValue": "Feb 05, 2021",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "dateOfLeaving",
+          "verifierValue": "Mar 31, 2024",
+          "companyValue": "Mar 31, 2024",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "designation",
+          "verifierValue": "Executive",
+          "companyValue": "Executive",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "exitReason",
+          "verifierValue": "Resigned",
+          "companyValue": "Resigned",
+          "isMatch": true,
+          "matchType": "exact"
+        }
+      ],
+      "overallStatus": "matched",
+      "matchScore": 100,
+      "consentGiven": true,
+      "verificationCompletedAt": "2025-12-04T03:12:20.150Z",
+      "createdAt": "2025-12-04T03:12:20.152Z",
+      "updatedAt": "2025-12-04T03:12:20.152Z"
+    },
+    {
+      "id": "_9gssjhzhf",
+      "verificationId": "VER000001",
+      "verifierId": "_p0pjxeg3j",
+      "employeeId": "6002056",
+      "submittedData": {
+        "employeeId": "6002056",
+        "name": "S Sathish",
+        "entityName": "TVSCSHIB",
+        "dateOfJoining": "2021-02-05T00:00:00.000Z",
+        "dateOfLeaving": "2024-03-31T00:00:00.000Z",
+        "designation": "Executive",
+        "exitReason": "Resigned",
+        "consentGiven": true
+      },
+      "comparisonResults": [
+        {
+          "field": "employeeId",
+          "verifierValue": "6002056",
+          "companyValue": "6002056",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "name",
+          "verifierValue": "S Sathish",
+          "companyValue": "S Sathish",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "entityName",
+          "verifierValue": "TVS-CSHIB",
+          "companyValue": "TVS-CSHIB",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "dateOfJoining",
+          "verifierValue": "Feb 05, 2021",
+          "companyValue": "Feb 05, 2021",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "dateOfLeaving",
+          "verifierValue": "Mar 31, 2024",
+          "companyValue": "Mar 31, 2024",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "designation",
+          "verifierValue": "Executive",
+          "companyValue": "Executive",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "exitReason",
+          "verifierValue": "Resigned",
+          "companyValue": "Resigned",
+          "isMatch": true,
+          "matchType": "exact"
+        }
+      ],
+      "overallStatus": "matched",
+      "matchScore": 100,
+      "consentGiven": true,
+      "verificationCompletedAt": "2025-12-04T03:42:00.436Z",
+      "createdAt": "2025-12-04T03:42:00.438Z",
+      "updatedAt": "2025-12-04T03:42:00.438Z"
+    },
+    {
+      "id": "_9m8yi921f",
+      "verificationId": "VER000001",
+      "verifierId": "_7bcqb1l2y",
+      "employeeId": "6002056",
+      "submittedData": {
+        "employeeId": "6002056",
+        "name": "S Sathish",
+        "entityName": "TVSCSHIB",
+        "dateOfJoining": "2021-02-05T00:00:00.000Z",
+        "dateOfLeaving": "2024-03-31T00:00:00.000Z",
+        "designation": "Executive",
+        "exitReason": "Resigned",
+        "consentGiven": true
+      },
+      "comparisonResults": [
+        {
+          "field": "employeeId",
+          "verifierValue": "6002056",
+          "companyValue": "6002056",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "name",
+          "verifierValue": "S Sathish",
+          "companyValue": "S Sathish",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "entityName",
+          "verifierValue": "TVS-CSHIB",
+          "companyValue": "TVS-CSHIB",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "dateOfJoining",
+          "verifierValue": "Feb 05, 2021",
+          "companyValue": "Feb 05, 2021",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "dateOfLeaving",
+          "verifierValue": "Mar 31, 2024",
+          "companyValue": "Mar 31, 2024",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "designation",
+          "verifierValue": "Executive",
+          "companyValue": "Executive",
+          "isMatch": true,
+          "matchType": "exact"
+        },
+        {
+          "field": "exitReason",
+          "verifierValue": "Resigned",
+          "companyValue": "Resigned",
+          "isMatch": true,
+          "matchType": "exact"
+        }
+      ],
+      "overallStatus": "matched",
+      "matchScore": 100,
+      "consentGiven": true,
+      "verificationCompletedAt": "2025-12-04T04:12:54.805Z",
+      "createdAt": "2025-12-04T04:12:54.808Z",
+      "updatedAt": "2025-12-04T04:12:54.808Z"
+    }
+  ],
+  "appeals": [
+    {
+      "id": "_fqtixmgi1",
+      "appealId": "APL000001",
+      "verificationId": "VER000001",
+      "employeeId": "6002056",
+      "verifierId": "_7txp4iztv",
+      "comments": "Hey just testing",
+      "supportingDocument": {
+        "filename": "appeals/6002056/1764792243186-3ec74189.png",
+        "s3Url": null,
+        "originalName": "Screenshot (1).png",
+        "mimeType": "image/png",
+        "size": 277847,
+        "uploadedAt": "2025-12-03T20:04:03.193Z"
+      },
+      "mismatchedFields": [
+        {
+          "fieldName": "employeeId",
+          "verifierValue": "Not Provided",
+          "companyValue": "6002056"
+        }
+      ],
+      "status": "approved",
+      "createdAt": "2025-12-03T20:04:03.194Z",
+      "updatedAt": "2025-12-03T20:49:07.586Z",
+      "hrResponse": "just testing",
+      "reviewedBy": "_admin2",
+      "reviewedAt": "2025-12-03T20:49:07.584Z",
+      "emailSentAt": "2025-12-03T20:49:07.585Z"
+    }
+  ],
+  "dashboard_stats": null
+}
